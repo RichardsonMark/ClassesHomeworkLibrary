@@ -3,12 +3,12 @@ import java.util.ArrayList;
 public class Library {
 
     private String name;
-    private int space;
+    private int capacity;
     private ArrayList<Book> books;
 
-    public Library(String name, int space) {
+    public Library(String name, int capacity) {
         this.name = name;
-        this.space = space;
+        this.capacity = capacity;
         this.books = new ArrayList<>();
     }
 
@@ -18,6 +18,8 @@ public class Library {
     }
 
     public void addABook(Book book) {
-        this.books.add(book);
+        if (books.size() < this.capacity){
+            this.books.add(book);
+        }
     }
 }
