@@ -14,8 +14,9 @@ public class Borrower {
         return this.tsundoku.size();
     }
 
-    public void addBookToCollection(Book book){
-        this.tsundoku.add(book);
+    public void addBookToCollection(Library library, Book book){
+        Book borrowed = library.loanABook(book);
+        this.tsundoku.add(borrowed);
     }
 
     public Book removeBookFromCollection(){

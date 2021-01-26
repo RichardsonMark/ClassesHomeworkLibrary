@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
+
 import static org.junit.Assert.assertEquals;
 
 public class LibraryTest {
@@ -27,7 +29,31 @@ public class LibraryTest {
     public void canAddABook(){
         library.addABook(book);
         library.addABook(book2);
+        assertEquals(2, library.getBookCount());
+    }
+
+    @Test
+    public void cannotAddABookNoSpace(){
+        library.addABook(book);
+        library.addABook(book2);
         library.addABook(book3);
         assertEquals(2, library.getBookCount());
+    }
+
+    @Test
+    public void canLoanABookToBorrower(){
+        library.addABook(book);
+        library.addABook(book2);
+        library.loanABook(book2);
+        assertEquals(1, library.getBookCount());
+    }
+
+    @Test
+    public void canGetNumberOfGenres() {
+        library.addABook(book);
+        library.addABook(book2);
+        HashMap<String, Integer> genres = library.getGenreMap();
+        int numGenres = genres.get(book.getGenre());
+        assertEquals(2, numGenres);
     }
 }
